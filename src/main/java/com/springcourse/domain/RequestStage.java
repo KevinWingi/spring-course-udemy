@@ -1,6 +1,5 @@
 package com.springcourse.domain;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -26,12 +25,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter @Setter
 @Entity(name = "request_stage")
-public class RequestStage implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-
+public class RequestStage {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
