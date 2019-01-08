@@ -39,7 +39,7 @@ public class RequestStage implements Serializable {
 	@Column(columnDefinition = "text")
 	private String description;
 	
-	@Column(name = "realization_date", nullable = false)
+	@Column(name = "realization_date", nullable = false, updatable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date realizationDate;
 	
