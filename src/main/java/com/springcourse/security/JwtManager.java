@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 
 import com.springcourse.constant.SecurityConstants;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
@@ -25,5 +27,15 @@ public class JwtManager {
 						 .compact();
 		
 		return jwt;
+	}
+	
+	public Claims parseToken(String jwt) throws JwtException {
+		Claims claims = Jwts.parser()
+							.setSigningKey(SecurityConstants.API_KEY.getBytes())
+							.parseClaimsJwt(jwt)
+							.getBody();
+		
+		
+		return claims;
 	}
 }
