@@ -28,7 +28,7 @@ public class RequestSavedto {
 	private List<RequestStage> stages = new ArrayList<RequestStage>();
 	
 	public Request transformToRequest() {
-		Request request = new Request(null, this.subject, this.description, null, null, this.owner, stages);
+		Request request = new Request(null, this.subject, this.description, null, null, this.owner, stages, null);
 		return request;
 	}
 	
