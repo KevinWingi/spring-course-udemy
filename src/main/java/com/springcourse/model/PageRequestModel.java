@@ -2,6 +2,8 @@ package com.springcourse.model;
 
 import java.util.Map;
 
+import org.springframework.data.domain.PageRequest;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,5 +20,9 @@ public class PageRequestModel {
 		if (params.containsKey("page")) page = Integer.parseInt(params.get("page"));
 		if (params.containsKey("size")) size = Integer.parseInt(params.get("size"));
 
+	}
+	
+	public PageRequest toSpringPageRequest() {
+		return PageRequest.of(page, size);
 	}
 }
