@@ -103,10 +103,9 @@ public class UserResource {
 	@GetMapping("/{id}/requests")
 	public ResponseEntity<PageModel<Request>> listAllRequestsById(
 			@PathVariable(name = "id") Long id,
-			@RequestParam(value = "size", defaultValue = "10") int size,
-			@RequestParam(value = "page", defaultValue = "0") int page) {
+			@RequestParam Map<String, String> params) {
 		
-		PageRequestModel pr = new PageRequestModel(page, size);
+		PageRequestModel pr = new PageRequestModel(params);
 		PageModel<Request> pm = requestService.listAllByOwnerIdOnLazyModel(id, pr);
 		
 		return ResponseEntity.ok(pm);
