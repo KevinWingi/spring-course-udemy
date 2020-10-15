@@ -20,11 +20,14 @@ public class PageRequestModel {
 	private int page = 0;
 	private int size = 10;
 	private String sort = "";
+	private String search = "";
 	
 	public PageRequestModel(Map<String, String> params) {
 		if (params.containsKey("page")) page = Integer.parseInt(params.get("page"));
 		if (params.containsKey("size")) size = Integer.parseInt(params.get("size"));
 		if (params.containsKey("sort")) sort = params.get("sort");
+		if (params.containsKey("search")) search = params.get("search");
+
 	}
 	
 	public PageRequest toSpringPageRequest() {
