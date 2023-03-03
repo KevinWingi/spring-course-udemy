@@ -3,6 +3,7 @@ package com.springcourse.service;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -62,7 +63,13 @@ public class UserService implements UserDetailsService {
 		
 		Page<User> page = userRepository.findAll(spec, pageable);
 		
-		PageModel<User> pm = new PageModel<>((int)page.getTotalElements(), page.getSize(), page.getTotalPages(), page.getContent());
+		List<User> users = page.getContent().stream().map(u -> {
+			u.setName(u.getName().toUpperCase());
+			
+			return u;
+		}).collect(Collectors.toList());
+		
+		PageModel<User> pm = new PageModel<>((int)page.getTotalElements(), page.getSize(), page.getTotalPages(), users);
 		return pm;
 	}
 
